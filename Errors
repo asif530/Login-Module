@@ -1,0 +1,9 @@
+not-null property references a null or transient value.com.module.login.Entity.UserTable.activityStatus
+
+List<UserContactDeviceTable> findAllByContact = deviceContactService.findAllByContact(userRegistrationDto.getEmail());
+
+UserContactDeviceTable userContactDeviceTable =(UserContactDeviceTable)
+                findAllByContact.stream().filter(x->x.getDeviceId().equalsIgnoreCase(userRegistrationDto.getDn())
+                        && x.getContact().equalsIgnoreCase(userRegistrationDto.getEmail()));
+
+The casting gives error. I am trying to find if the combination of dn and email is in the list.If there are are any it will be only one.
