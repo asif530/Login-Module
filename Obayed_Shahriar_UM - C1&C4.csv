@@ -1,0 +1,39 @@
+Case 1,Device Register,,,,DeviceTable,,,,,,
+,,,,,dvc_tbl_id (pk),dn,dvc_cog_id,usr_tbl_id(fk),,dvc_cog_id,Will get update once a record is inserted in UserTable 
+,,,,,1,12345asdf,dvc-usr-cog-12345asdf,1,,usr_tbl_id(fk),Will get update once a record is inserted in UserTable 
+Device Number,DN,12345asdf,,,,,,,,,
+Device User Cognito,DUC,dvc-usr-cog-12345asdf,,,,,,,,,
+,,,,,,,,,,,
+Device Table,,,,,First a check will be done DeviceTable to see if the exists,,,,,,
+User Table,,,,,If exists generate token with device number,,,,,,
+,,,,,"if not exists 
+1. create a user in cognito using device id
+2. create a record in UserTable
+3. create a new entry in device table
+--------update the DeviceTable with cognitoId and UserTableId-----",,,,,,"Proposal: Many users will enter website and 
+just browse. They may or may not make booking 
+which generates revenue. So why waste resource in aws?
+Simply track devices using database.
+As system needs token generate them with JWT.
+Cognito generates token with JWT"
+,,,,,,,,,,,
+,,,,,UserTable,,,,,,
+,,,,,usr_tbl_id(pk),cog_id,medium,login_logout_status,activity_status,,medium
+,,,,,1,dvc-usr-cog-12345asdf,1,FALSE,1,,1 -> Device
+,,,,,,,Might not require,,,,2-> Email 
+,,,,,,,,,,,3 -> Mobile 
+,,,,,,,,,,,4 -> Tab
+,,,,,,,,,,,
+,,,,,,,,,,,activity_status
+Case 4,Device Register,,,,DeviceTable,,,,,,1 -> Normal
+,,,,,dvc_tbl_id (pk),dn,dvc_cog_id,usr_tbl_id(fk),,,2 -> Temporary Ban
+,,,,,1,12345asdf,dvc-usr-cog-12345asdf,1,,,3 -> Permanent Ban
+Device Number,DN,67890zxcv,,,2,67890zxcv,dvc-usr-cog-67890zxcv,2,,,
+Device User Cognito,DUC,dvc-usr-cog-67890zxcv,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+Device Table,,,,,,,,,,,
+User Table,,,,,UserTable,,,,,,
+,,,,,usr_tbl_id(pk),cog_id,medium,login_logout_status,activity_status,,
+,,,,,1,dvc-usr-cog-12345asdf,1,FALSE,1,,
+,,,,,2,dvc-usr-cog-67890zxcv,1,FALSE,1,,
